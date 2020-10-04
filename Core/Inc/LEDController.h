@@ -11,7 +11,7 @@
 #include "VCP.h"
 #include "NanopbPayload.h"
 
-// test for the dev board...
+// test for the dev board... flash some lights
 // reuse the Example field
 #include "message.pb.h"
 

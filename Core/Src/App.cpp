@@ -37,7 +37,8 @@ void App::processVCP(){
 	uint16_t msg_id;
 	bool headerParsed = false;
 
-	if(vcp.size() > DataPacket::HeaderSize){ // it might not contain all the data yet ....
+	if(vcp.size() > DataPacket::HeaderSize)
+	{
       DataPacket::OnitronicsHeader hdr = readHeaderFromBuffer();
 	  data_size = hdr.payloadSize();
 	  msg_id = hdr.msgID();
@@ -46,7 +47,7 @@ void App::processVCP(){
 	//else....
 
 	if(headerParsed && vcp.size() >= data_size){
-	  payloadData.resize(data_size); //is this needed?
+	  payloadData.resize(data_size);
 	  readPayloadFromBuffer(data_size);
 	  auto func = cmdRegister.findDevice(msg_id);
       func(payloadData, data_size); //call function on device
