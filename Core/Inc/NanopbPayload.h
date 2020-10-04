@@ -18,10 +18,15 @@ namespace DataPacket {
 class NanopbPayload {
 
 public:
-	NanopbPayload()=delete;  //could I make these methods static
+	NanopbPayload()=delete;
 
+	// encode message in byte stream using nanopb
+	// @param buffer -preallocated buffer upto max length of message
+	// @param len - encoded message length output
+	// @param message fields eg Example_fields see nanopb
+	// @param message - nanopb message instance
 	template<typename T>
-    static bool encode(std::vector<uint8_t> &buffer, uint16_t &len, const pb_msgdesc_t* fields, T &message)
+    static bool encode(std::vector<uint8_t> &buffer, uint16_t &len, const pb_msgdesc_t* fields, const T &message)
     {
 	    pb_ostream_t stream_tx = pb_ostream_from_buffer(buffer.data(), 128); //check max length ...
 	    bool status_encode = pb_encode(&stream_tx, Example_fields, &message);
@@ -29,6 +34,7 @@ public:
     	return status_encode;
     }
 
+	//decode a byte stream into a nanopb message
     template<typename T>
     static bool decode(const std::vector<uint8_t> &buffer, const uint16_t len, const pb_msgdesc_t* fields, T &message)
 	{

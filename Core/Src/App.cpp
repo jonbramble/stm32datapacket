@@ -47,8 +47,6 @@ void App::processVCP(){
       func(payloadData, data_size); //call function on device
 	}
 	//else....
-
-	//how does the data return or send messages back?
 }
 
 DataPacket::OnitronicsHeader App::readHeaderFromBuffer() {

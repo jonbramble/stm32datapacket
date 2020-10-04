@@ -16,12 +16,12 @@ Echo::Echo(VCP _vcp): vcp(_vcp) {
 Echo::~Echo() {
 }
 
-// maybe these methods can be extracted out
-
 void Echo::receiveEventData(std::vector<uint8_t> pb_buffer_rx, uint16_t pb_size_rx)
 {
 	bool status  = DataPacket::NanopbPayload::decode<Example>(pb_buffer_rx, pb_size_rx, Example_fields, message);
-	transmitData(); // do the echo of the decoded packet
+	if(status){
+		transmitData(); // do the echo of the decoded packet
+	}
 };
 
 void Echo::transmitData(){
@@ -29,11 +29,12 @@ void Echo::transmitData(){
 	uint16_t message_length = 0;
     bool status = DataPacket::NanopbPayload::encode<Example>(buffer_tx, message_length, Example_fields, message);
 
-    //build the header
-	DataPacket::OnitronicsHeader hdr(2, message_length, 1, 0);
-	hdr.toBytes(buffer_payload);
+    if(status){
+	  DataPacket::OnitronicsHeader hdr(2, message_length, 1, 0);
+	  hdr.toBytes(buffer_payload);
 
-	vcp.writeHeader(buffer_payload);
-	vcp.writeDataPacket(buffer_tx, message_length);
+	  vcp.writeHeader(buffer_payload);
+	  vcp.writeDataPacket(buffer_tx, message_length);
+    }
 }
 
