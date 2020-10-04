@@ -92,22 +92,20 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_DEVICE_Init();
 
+  HAL_Delay(300); //required for the usb cdc to come up before entering the main loop
+
   /* USER CODE BEGIN 2 */
   App app(mcbuf);
 
-  HAL_Delay(200);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
     /* USER CODE END WHILE */
     app.update();
-
-
-    //no sign of the usb port!
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

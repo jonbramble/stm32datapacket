@@ -8,9 +8,8 @@
 #include <VCP.h>
 #include "usbd_cdc_if.h"
 
-VCP::VCP(cbuf_handle_t cbuf) {
+VCP::VCP(cbuf_handle_t cbuf): m_cbuf(cbuf) { // can you do this will the c ptrs?
 	reset();
-    m_cbuf = cbuf;
 }
 
 VCP::~VCP() {

@@ -23,6 +23,7 @@ void LEDController::receiveEventData(std::vector<uint8_t> pb_buffer_rx, uint16_t
 		if(message.value==1){
 			//turn light on
 			HAL_GPIO_WritePin(LD2_GPIO_Port, LD1_Pin, GPIO_PIN_SET);
+			HAL_Delay(100);
 		}
 		else if(message.value==2){
 			HAL_GPIO_WritePin(LD2_GPIO_Port, LD1_Pin, GPIO_PIN_RESET);
@@ -30,6 +31,7 @@ void LEDController::receiveEventData(std::vector<uint8_t> pb_buffer_rx, uint16_t
 		else if(message.value==3){
 			//turn light on
 			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+			HAL_Delay(100);
 		}
 		else if(message.value==4){
 			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
@@ -37,6 +39,7 @@ void LEDController::receiveEventData(std::vector<uint8_t> pb_buffer_rx, uint16_t
 		else if(message.value==5){
 			//turn light on
 			HAL_GPIO_WritePin(LD2_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+			HAL_Delay(100);
 		}
 		else if(message.value==6){
 			HAL_GPIO_WritePin(LD2_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);

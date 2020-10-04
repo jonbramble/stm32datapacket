@@ -31,9 +31,9 @@ void Echo::transmitData(){
 
     if(status){
 	  DataPacket::OnitronicsHeader hdr(2, message_length, 1, 0);
-	  hdr.toBytes(buffer_payload);
+	  hdr.toBytes(buffer_header);
 
-	  vcp.writeHeader(buffer_payload);
+	  vcp.writeHeader(buffer_header);
 	  vcp.writeDataPacket(buffer_tx, message_length);
     }
 }

@@ -7,6 +7,7 @@
 #include "VCP.h"
 #include "Echo.h"
 #include "LEDController.h"
+#include "DefaultHandler.h"
 
 #include <vector>
 #include <unordered_map>
@@ -27,10 +28,12 @@ private:
 	std::array<uint8_t, DataPacket::HeaderSize> buffer_rx;
 	std::vector<uint8_t> payloadData;
 
-    VCP vcp;
+    VCP vcp; //must come first
+
 	CommandRegister cmdRegister;
 	Echo echo;
 	LEDController ledController;
+	DefaultHandler defaultHandler;
 
 	void setupDevices();
 	DataPacket::OnitronicsHeader readHeaderFromBuffer();

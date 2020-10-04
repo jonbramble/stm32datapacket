@@ -30,7 +30,7 @@ public:
 
 private:
 	std::vector<uint8_t> buffer_tx;
-	std::array<uint8_t,DataPacket::HeaderSize> buffer_payload;
+	std::array<uint8_t,DataPacket::HeaderSize> buffer_header;
 
 	//one of many possible messages - defined by nanopb headers
 	Example message = Example_init_zero;  // the struct for this hardware element
