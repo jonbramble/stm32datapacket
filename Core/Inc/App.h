@@ -6,6 +6,7 @@
 #include "CommandRegister.h"
 #include "VCP.h"
 #include "Echo.h"
+#include "LEDController.h"
 
 #include <vector>
 #include <unordered_map>
@@ -29,6 +30,7 @@ private:
     VCP vcp;
 	CommandRegister cmdRegister;
 	Echo echo;
+	LEDController ledController;
 
 	void setupDevices();
 	DataPacket::OnitronicsHeader readHeaderFromBuffer();

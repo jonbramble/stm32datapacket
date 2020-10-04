@@ -11,8 +11,7 @@
 #define ECHO_H_
 
 
-#include "pb_decode.h"
-#include "pb_encode.h"
+
 #include "message.pb.h"
 
 #include "NanopbPayload.h"
@@ -34,12 +33,9 @@ private:
 	std::array<uint8_t,DataPacket::HeaderSize> buffer_payload;
 
 	//one of many possible messages - defined by nanopb headers
-	Example message = Example_init_zero;;  // the struct for this hardware element
+	Example message = Example_init_zero;  // the struct for this hardware element
 
 	VCP &vcp;
-
-	//DataPacket::NanopbPayload payload;
-
 };
 
 #endif /* ECHO_H_ */

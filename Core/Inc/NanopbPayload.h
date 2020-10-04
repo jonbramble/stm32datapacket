@@ -12,6 +12,8 @@
 // do crc checks here
 
 #include <vector>
+#include "pb_decode.h"
+#include "pb_encode.h"
 
 namespace DataPacket {
 
@@ -29,7 +31,7 @@ public:
     static bool encode(std::vector<uint8_t> &buffer, uint16_t &len, const pb_msgdesc_t* fields, const T &message)
     {
 	    pb_ostream_t stream_tx = pb_ostream_from_buffer(buffer.data(), 128); //check max length ...
-	    bool status_encode = pb_encode(&stream_tx, Example_fields, &message);
+	    bool status_encode = pb_encode(&stream_tx, fields, &message);
 	    len = stream_tx.bytes_written;
     	return status_encode;
     }

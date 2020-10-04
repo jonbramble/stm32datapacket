@@ -27,7 +27,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <App.h>
-//#include "circular_buffer.h"
 static constexpr uint16_t BUFFER_SIZE= 4096;
 /* USER CODE END Includes */
 

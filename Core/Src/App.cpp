@@ -1,18 +1,18 @@
 
 #include <App.h>
-#include "usbd_cdc_if.h"
-#include <cstring>
-
 #include "OnitronicsHeader.h"
 
-App::App(cbuf_handle_t buffer): vcp(buffer), echo(vcp){
+App::App(cbuf_handle_t buffer): vcp(buffer), echo(vcp), ledController(vcp){
 	setupDevices();
 }
 
 void App::setupDevices(){
 	// repeat this for all the message ids and functions to call, there may be more than one per device
 	auto echoFunc = std::bind(&Echo::receiveEventData, &echo, std::placeholders::_1, std::placeholders::_2); // move this to cmd register to hide bind...
+	auto ledFunc =  std::bind(&LEDController::receiveEventData, &ledController, std::placeholders::_1, std::placeholders::_2);
+
 	cmdRegister.addDevice(1, echoFunc);
+	cmdRegister.addDevice(10, ledFunc);
 
 	// add more devices here ....
 	// Lasers
