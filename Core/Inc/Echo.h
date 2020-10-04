@@ -13,9 +13,7 @@
 
 
 #include "message.pb.h"
-
 #include "NanopbPayload.h"
-
 #include "VCP.h"
 
 #include <vector>

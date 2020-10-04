@@ -8,7 +8,7 @@
 #include <DefaultHandler.h>
 
 DefaultHandler::DefaultHandler(VCP _vcp): vcp(_vcp) {
-	// TODO Auto-generated constructor stub
+
 }
 
 void DefaultHandler::receiveEventData(std::vector<uint8_t> pb_buffer_rx, uint16_t pb_size_rx){
